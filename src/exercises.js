@@ -2,6 +2,22 @@ function commonEnd(a, b) {
   if (!a || a.length === 0 || !b || b.length === 0) {
     return false;
   }
+  //needs work
+  else {
+    firstElementa = a[0];
+    firstElementb = b[0];
+    lastElementa = a[a.length + 1];
+    lastElementb = b[b.length + 1];
+    if (firstElementa === firstElementb) {
+      return true;
+    }
+    else if (lastElementa === lastElementb) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
   // write your code here
 }
