@@ -6,8 +6,8 @@ function commonEnd(a, b) {
   else {
     firstElementa = a[0];
     firstElementb = b[0];
-    lastElementa = a[a.length + 1];
-    lastElementb = b[b.length + 1];
+    lastElementa = a[a.length - 1];
+    lastElementb = b[b.length - 1];
     if (firstElementa === firstElementb) {
       return true;
     }
@@ -18,12 +18,32 @@ function commonEnd(a, b) {
       return false;
     }
   }
-
-  // write your code here
 }
-
+//not done
 function endsMeet(values, n) {
-  // write your code here
+  let newArray = [];
+  if (!values || values.length < n || n < 0 || Number.isInteger(n) === false) {
+    return [];
+  }
+  else {
+    if (n === 0) {
+      return values;
+    }
+    else {
+      console.log(values);
+      console.log(n);
+      for (let i = 0; i < n; i++) {
+        //let firstn = values.shift();
+        newArray.push(values[i]);
+      }
+      for (let k = values.length - 1; k > n; k--) {
+        //let lastn = values.pop();
+        newArray.push(values[k]);
+      }
+      console.log(newArray);
+      return newArray;
+    }  
+  }
 }
 
 function difference(numbers) {
