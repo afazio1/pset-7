@@ -21,33 +21,21 @@ function commonEnd(a, b) {
 }
 //not done
 function endsMeet(values, n) {
-  let newArray = [];
-  if (!values || values.length < n || n < 0 || Number.isInteger(n) === false) {
+  let array1 = [];
+  let array2 = [];
+  if (!values || values.length < n || n < 1 || !Number.isInteger(n)) {
     return [];
   }
   else {
-    if (n === 0) {
-      return values;
-    }
-    else {
-      console.log(values);
-      console.log(n);
-      for (let i = 0; i < n; i++) {
-        //let firstn = values.shift();
-        newArray.push(values[i]);
-      }
-      for (let k = values.length - 1; k > n; k--) {
-        //let lastn = values.pop();
-        newArray.push(values[k]);
-      }
-      console.log(newArray);
+      array1 = values.slice(0, n);
+      array2 = values.slice(values.length - n, values.length + 1) //[1, 2, 3, 4]
+      newArray = array1.concat(array2);
       return newArray;
-    }  
   }
 }
 
 function difference(numbers) {
-  // write your code here
+  
 }
 
 function max(number) {
