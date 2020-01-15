@@ -35,6 +35,47 @@ function endsMeet(values, n) {
 }
 
 function difference(numbers) {
+  let largestNumber = 0;
+  let smallestNumber = 0;
+  if (!numbers || numbers.length < 1 || isNotNumber(numbers)) {
+    return undefined;
+  }
+  else {
+    if (numbers.length === 1) {
+      return numbers[0];
+    }
+    else {
+      for (let i = 0; i < numbers.length - 1; i++) {
+      if (numbers[i] > largestNumber) {
+        largestNumber = numbers[i];
+      }
+    }
+      for (let i = 0; i < numbers.length - 1; i++) {
+        if (numbers[i] < smallestNumber) {
+          smallestNumber = numbers[i];
+        }
+      }
+      return largestNumber - smallestNumber;
+    }
+    
+  }
+
+  function isNotNumber(numbers) {
+    let flag = 0;
+    for (let i = 0; i < numbers.length - 1; i++) {
+      possibleNumber = isNaN(numbers[i]);
+      if (possibleNumber === true) {
+        flag = 1;
+      }
+      console.log(numbers[i]);
+    }
+    if (flag === 1) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
   
 }
 
