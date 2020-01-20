@@ -163,7 +163,7 @@ function balance(numbers) {
   }
   else {
     let flag = 0;
-    
+
     for (let i = 0; i < numbers.length; i++) { // [-1, 1, 1, -1]
       splitLeft = i;
       splitRight = i + 1;
@@ -190,7 +190,21 @@ function balance(numbers) {
 }
 
 function clumps(values) {
-  // write your code here
+  let clumpCount = 0;
+  if (!values) {
+    return -1;
+  }
+  else {
+     for (let i = 0; i < values.length - 1; i++) {
+      if (values[i - 1] === values[i]) {
+
+      }
+      else if (values[i] === values[i + 1]) {
+        clumpCount++;
+      }
+    }
+    return clumpCount;
+  }
 }
 
 /*
