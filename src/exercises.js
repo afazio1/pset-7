@@ -28,7 +28,7 @@ function endsMeet(values, n) {
   }
   else {
       array1 = values.slice(0, n);
-      array2 = values.slice(values.length - n, values.length + 1) //[1, 2, 3, 4]
+      array2 = values.slice(values.length - n, values.length + 1);
       newArray = array1.concat(array2);
       return newArray;
   }
@@ -111,7 +111,7 @@ function everywhere(values, x) {
       if (values[i] === x) {
         flag = 0;
       }
-      else if (values[i - 1] === x || values[i + 1] === x) { // [1, 2, 3, 2]
+      else if (values[i - 1] === x || values[i + 1] === x) {
         flag = 0;
       }
       else {
@@ -152,9 +152,7 @@ function consecutive(numbers) {
     else {
       return false;
     }
-
   }
-  
 }
 
 function balance(numbers) {
@@ -164,7 +162,7 @@ function balance(numbers) {
   else {
     let flag = 0;
 
-    for (let i = 0; i < numbers.length; i++) { // [-1, 1, 1, -1]
+    for (let i = 0; i < numbers.length; i++) {
       splitLeft = i;
       splitRight = i + 1;
       let sumLeft = 0;
