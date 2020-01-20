@@ -19,7 +19,7 @@ function commonEnd(a, b) {
     }
   }
 }
-//not done
+
 function endsMeet(values, n) {
   let array1 = [];
   let array2 = [];
@@ -35,39 +35,116 @@ function endsMeet(values, n) {
 }
 
 function difference(numbers) {
-  let largestNumber = 0;
-  let smallestNumber = 0;
-  if (!numbers || numbers.length < 1 || isNotNumber(numbers)) {
+  
+  if (!numbers || numbers.length < 1 || numbers.some(isNaN)) {
+    return undefined;
+  } 
+  else {
+    if (numbers.length === 1) {
+      return 0;
+    }
+    else {
+      maxNumber = Number(Math.max.apply(null, numbers));
+      minNumber = Number(Math.min.apply(null, numbers)); 
+    }
+    return maxNumber - minNumber;
+  }
+}
+
+function max(number) {
+  if (!number || number.length < 3 || number.length % 2 === 0 || number.some(isNaN)) {
     return undefined;
   }
   else {
-    if (numbers.length === 1) {
-      return numbers[0];
-    }
-    else {
-      for (let i = 0; i < numbers.length - 1; i++) {
-      if (numbers[i] > largestNumber) {
-        largestNumber = numbers[i];
-      }
-    }
-      for (let i = 0; i < numbers.length - 1; i++) {
-        if (numbers[i] < smallestNumber) {
-          smallestNumber = numbers[i];
-        }
-      }
-      return largestNumber - smallestNumber;
-    }
+    first = number[0]; 
+    last = number[number.length - 1];
+    middle = number[(number.length - 1) / 2]; 
     
+    return Math.max(first, last, middle);
+  } 
+}
+
+function middle(values) {
+  let newArray = [];
+  if (!values || values.length < 3 || values.length % 2 === 0) {
+    return [];
+  }
+  else {
+    middleMiddle = values[(values.length - 1) / 2];
+    firstMiddle = values[((values.length - 1) / 2) - 1];
+    lastMiddle = values[((values.length - 1) / 2) + 1];
+
+    newArray.push(firstMiddle, middleMiddle, lastMiddle);
+
+    return newArray;
   }
 
-  function isNotNumber(numbers) {
-    let flag = 0;
-    for (let i = 0; i < numbers.length - 1; i++) {
-      possibleNumber = isNaN(numbers[i]);
-      if (possibleNumber === true) {
-        flag = 1;
+
+}
+
+function increasing(numbers) {
+  let flag = 0;
+  if (!numbers || numbers.length < 3 || numbers.some(isNaN) || numbers.some(Number.isInteger) === false) {
+    return false;
+  }
+  else {
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] < numbers[i + 1] && numbers[i + 1] < numbers[i + 2]) {
+          flag = 1;
+          return true;
+        }
       }
-      console.log(numbers[i]);
+      if (flag === 0) {
+        return false;
+      }
+    }
+  }
+
+function everywhere(values, x) {
+  let flag = 1;
+  if (!values || values.length < 1 || x === undefined) {
+    return false;
+  }
+  else {
+
+    for (let i = 0; i < values.length - 1; i++) {
+      if (values[i] === x) {
+        flag = 0;
+      }
+      else if (values[i - 1] === x || values[i + 1] === x) { // [1, 2, 3, 2]
+        flag = 0;
+      }
+      else {
+        flag = 1;
+        return false;
+      }
+    }
+  }
+  if (flag === 0) {
+    return true;
+  }
+
+}
+
+function consecutive(numbers) {
+  let flag = 0;
+  if (!numbers || numbers.length < 3 || numbers.some(isNaN) || numbers.some(Number.isInteger) === false) {
+    return false;
+  }
+  else {
+
+    for (let i = 0; i < numbers.length - 1; i++) {
+      if (numbers[i] % 2 === 0 && numbers[i + 1] % 2 === 0 && numbers[i + 2] % 2 === 0) {
+        flag = 1;
+        break;
+      }
+      else if (numbers[i] % 2 !== 0 && numbers[i + 1] % 2 !== 0 && numbers[i + 2] % 2 !== 0) {
+        flag = 1;
+        break;
+      }
+      else {
+
+      }
     }
     if (flag === 1) {
       return true;
@@ -75,32 +152,40 @@ function difference(numbers) {
     else {
       return false;
     }
+
   }
   
 }
 
-function max(number) {
-  // write your code here
-}
-
-function middle(values) {
-  // write your code here
-}
-
-function increasing(numbers) {
-  // write your code here
-}
-
-function everywhere(values, x) {
-  // write your code here
-}
-
-function consecutive(numbers) {
-  // write your code here
-}
-
 function balance(numbers) {
-  // write your code here
+  if (!numbers || numbers.length < 2 || numbers.some(isNaN) || numbers.some(Number.isInteger) === false) {
+    return false;
+  }
+  else {
+    let flag = 0;
+    
+    for (let i = 0; i < numbers.length; i++) { // [-1, 1, 1, -1]
+      splitLeft = i;
+      splitRight = i + 1;
+      let sumLeft = 0;
+      let sumRight = 0;
+      for (let j = 0; j <= splitLeft; j++) {
+        sumLeft = sumLeft + numbers[j];
+
+      }
+      for (let k = i + 1; k <= numbers.length - 1; k++) {
+        sumRight = sumRight + numbers[k];
+
+      } 
+      if (sumLeft === sumRight) {
+        flag = 1;
+        return true;
+      }
+    }
+    if (flag !== 1) {
+      return false;
+    }
+  }
   console.log("test");
 }
 
